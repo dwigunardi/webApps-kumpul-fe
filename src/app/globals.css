@@ -58,6 +58,14 @@
 .cl-userButtonPopoverActionButtonIcon {
   color: white;
 }
+.cl-userButtonPopoverActionButton {
+  color: white;
+}
+
+/* .cl-userButtonPopoverMain{
+  background-color: #0E78F9;
+  color: white;
+} */
 
 .cl-logoBox {
   height: 40px;

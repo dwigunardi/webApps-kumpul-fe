@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react'
-import { SideBarLinks } from '../../constants'
+import { SideBarLinks } from '../constants'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
