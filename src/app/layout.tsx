@@ -5,6 +5,12 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { Toaster } from "@/components/ui/toaster"
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { dark } from "@clerk/themes";
+import { getCurrentTheme } from "@/lib/theme";
+import SetThemeCookie from "@/hooks/setThemeCookie";
+import { getThemeParam } from "@/hooks/getThemeParam";
+import { cookies } from "next/headers";
 // ideally, Stream Video theme should be imported before your own styles
 // as this would make it easier for you to override certain video-theme rules
 // import './my-styles.css';
@@ -21,29 +27,45 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  searchParams
 }: Readonly<{
   children: React.ReactNode;
+  searchParams: URLSearchParams
 }>) {
+  const cookieStore = cookies()
+  const theme = cookieStore.get('theme')
+
   return (
-    <html lang="en">
-      <ClerkProvider appearance={{ 
+    <html lang="en" suppressHydrationWarning>
+      <ClerkProvider appearance={{
         layout: {
           logoImageUrl: '/icons/kumpul1.png',
           socialButtonsVariant: 'iconButton',
         },
-        variables: {
-          colorText: '#fff',
-          colorPrimary: '#0E78f9',
-          colorBackground: '#1c1f2e',
-          colorInputBackground: '#252a41',
-          colorInputText: '#fff',
-        }
+        baseTheme: theme?.value == "dark" ? dark : undefined,
+        // variables: {
+        //   colorText: '#fff',
+        //   colorPrimary: '#0E78f9',
+        //   colorBackground: '#1c1f2e',
+        //   colorInputBackground: '#252a41',
+        //   colorInputText: '#fff',
+        // }
       }}>
-        <body className={`${inter.className} bg-dark-2`}>
+        <body className={`${inter.className}`}>
           <main>
-            {children}
-            <Toaster />
-          </main> 
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+              themes={["light", "dark"]}
+              enableColorScheme
+            >
+              <SetThemeCookie />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </main>
         </body>
       </ClerkProvider>
     </html>

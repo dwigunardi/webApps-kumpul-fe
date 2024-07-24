@@ -11,9 +11,10 @@ export const metadata: Metadata = {
     }
   };
 
-const HomeLayout = ({ children }: { children: ReactNode }) => {
+const HomeLayout = ({ children, searchParams }: { children: ReactNode, searchParams: URLSearchParams }) => {
+    
     return (
-        <main className='relative'>
+        <main className='relative bg-[#D8D8D8] dark:bg-black'>
             <Navbar />
 
             <div className="flex">

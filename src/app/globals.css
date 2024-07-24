@@ -8,6 +8,18 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  color: #000;
+  background: #fff;
+}
+
+[data-mode='dark'],
+.dark body {
+  color: #fff;
+  background: #000;
+}
+
 /* ======== stream css overrides ======== */
 .str-video__call-stats {
   max-width: 500px;
@@ -55,17 +67,13 @@
 
 /* ==== clerk class override ===== */
 
-.cl-userButtonPopoverActionButtonIcon {
+/* .cl-userButtonPopoverActionButtonIcon {
   color: white;
 }
 .cl-userButtonPopoverActionButton {
   color: white;
 }
 
-/* .cl-userButtonPopoverMain{
-  background-color: #0E78F9;
-  color: white;
-} */
 
 .cl-logoBox {
   height: 40px;
@@ -84,7 +92,23 @@
 }
 .cl-userButtonPopoverActionButton {
   color: white;
+} */
+
+/* .cl-userButtonPopoverMain{
+  background-color: #0E78F9;
+  color: white;
+} */
+
+html.light,
+.cl-internal-pp7u0o {
+  color: black!important;
 }
+
+html.dark,
+.cl-internal-pp7u0o {
+  color: white!important;
+}
+
 
 /* =============================== */
 
