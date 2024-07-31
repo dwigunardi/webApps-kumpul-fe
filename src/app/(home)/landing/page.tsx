@@ -9,11 +9,13 @@ const Landing = () => {
   return (
     <div className='w-full relative'>
       <div className="xs:hidden lg:fixed right-10 bottom-10">
-        <ButtonCustom variant="outline" bgColor='bg-blue-1' textColor='text-blue-1' shadowColor='shadow-blue-1' >
-          <span className='relative z-10'>Sign Up
-          </span>
-          <ArrowRightCircleIcon className='ml-3 hover:text-white z-10 relative' />
-        </ButtonCustom>
+        <Link href={'/sign-up'}>
+          <ButtonCustom variant="outline" bgColor='bg-blue-1' textColor='text-blue-1' shadowColor='shadow-blue-1' >
+            <span className='relative z-10'>Sign Up
+            </span>
+            <ArrowRightCircleIcon className='ml-3 hover:text-white z-10 relative' />
+          </ButtonCustom>
+        </Link>
       </div>
       <section className="bg-light-1 dark:bg-dark-1 py-12 md:py-24 lg:py-32">
         <div className="container grid gap-8 md:grid-cols-2 items-center">
