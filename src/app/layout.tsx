@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Kumpul",
-  description: "Just learning about RTC Concept",
+  description: "Kumpul is Video Conference Platform",
   icons: {
     icon: '/icons/logo.svg'
   }

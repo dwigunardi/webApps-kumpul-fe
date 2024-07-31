@@ -3,7 +3,7 @@ import MeetingTypeList from '@/components/MeetingTypeList';
 
 const Home = () => {
   const now = new Date()
-  const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Jakarta',}).toLowerCase();
+  const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta',}).toLowerCase();
   const date = new Intl.DateTimeFormat('id-ID', { dateStyle: 'full' }).format(now);
   return (
     <section className='flex size-full flex-col gap-10 text-white'>

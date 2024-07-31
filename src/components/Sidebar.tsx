@@ -83,7 +83,7 @@ const Sidebar = () => {
           {SideBarLinks.map((link) => {
             const isActive = pathName === link.route || pathName.startsWith(`${link.route}/`);
             return (
-              <Link href={link.route} key={link.label} className={cn(`flex items-center gap-4 p-4 rounded-lg ${!isOpen ? 'justify-center' : 'justify-start'}`, {
+              <Link rel='canonical' href={link.route} key={link.label} className={cn(`flex items-center gap-4 p-4 rounded-lg ${!isOpen ? 'justify-center' : 'justify-start'}`, {
                 'bg-blue-1': isActive,
               })}>
                 <Image src={link.imgUrl} alt={link.label} width={24} height={24} />

@@ -17,7 +17,7 @@ body {
 [data-mode='dark'],
 .dark body {
   color: #fff;
-  background: #000;
+  background: #0F1017;
 }
 
 /* ======== stream css overrides ======== */
@@ -107,6 +107,19 @@ html.light,
 html.dark,
 .cl-internal-pp7u0o {
   color: white!important;
+}
+
+.custom-font {
+    font-size: 45vw;
+    text-align: center;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+    color: #ffffff26;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 0.07);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Montserrat", monospace;
 }
 
 

@@ -1,0 +1,16 @@
+# Allow all user agents to crawl everything
+User-agent: *
+Disallow:
+
+# Disallow all crawlers from accessing certain folders
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+
+# Disallow a specific crawler from accessing the site
+User-agent: BadBot
+Disallow: /
+
+# Allow Googlebot to access everything
+User-agent: Googlebot
+Disallow:

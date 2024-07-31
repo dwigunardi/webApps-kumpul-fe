@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
     title: "Kumpul",
-    description: "Just learning about RTC Concept",
+    description: "Wellcome to Kumpul a Video Conference Platform",
     icons: {
       icon: '/icons/logo.svg'
     }
