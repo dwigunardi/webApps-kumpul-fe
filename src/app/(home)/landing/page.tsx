@@ -8,7 +8,7 @@ import React from 'react'
 const Landing = () => {
   return (
     <div className='w-full relative'>
-      <div className="xs:hidden lg:fixed right-10 bottom-10">
+      <div className="xs:hidden lg:fixed right-10 bottom-10 z-50">
         <Link href={'/sign-up'}>
           <ButtonCustom variant="outline" bgColor='bg-blue-1' textColor='text-blue-1' shadowColor='shadow-blue-1' >
             <span className='relative z-10'>Sign Up
@@ -52,12 +52,12 @@ const Landing = () => {
             <p className='text-dark-1 dark:text-light-1 text-sm'>* Tidak Terhubung ke Zoom</p>
           </div>
           <Image
-            src="/images/hero-image.svg"
+            src="/images/hero-image-1.png"
             width={700}
             height={500}
-            loading='lazy'
             // loader={() => '/images/loader.gif'}
-            alt="Hero"
+            priority
+            alt="Hero image"
             className="mx-auto rounded-lg bg-transparent"
           />
         </div>

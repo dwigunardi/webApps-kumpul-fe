@@ -54,7 +54,7 @@ export default function NavLanding() {
                     <br />
                     <div className="border border-b-2 border-dark-1 dark:border-light-1" />
                     <div className="grid gap-2 py-6">
-                        <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+                        {/* <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
                             Home
                         </Link>
                         <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
@@ -65,7 +65,7 @@ export default function NavLanding() {
                         </Link>
                         <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
                             Contact
-                        </Link>
+                        </Link> */}
                     </div>
                 </SheetContent>
             </Sheet>
@@ -74,7 +74,7 @@ export default function NavLanding() {
                 <span className="font-bold text-xl">Kumpul</span>
             </Link>
             <nav className="hidden ml-auto lg:flex gap-6">
-                <Link
+                {/* <Link
                     href="#"
                     className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
                     prefetch={false}
@@ -101,7 +101,7 @@ export default function NavLanding() {
                     prefetch={false}
                 >
                     Contact
-                </Link>
+                </Link> */}
             </nav>
             <nav className="ml-auto hidden lg:flex gap-6">
                 <Link href="/sign-in"
