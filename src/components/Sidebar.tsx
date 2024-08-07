@@ -37,9 +37,9 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className={`sticky top-0 left-0 h-screen transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-32'} ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-[#555555]'}`}>
+    <div className={`sticky top-0 left-0 h-screen transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-32'} ${theme === 'dark' ? 'bg-dark-1 text-white' : 'bg-light-4 text-[#555555]'}`}>
       <div className="flex flex-col justify-between h-full p-6 pt-28 relative">
-        <div className="flex justify-between gap-2 border border-sky-1 p-4 rounded-2xl mt-0 mb-8">
+        <div className="flex justify-between gap-2 border border-blue-2 p-4 rounded-2xl mt-0 mb-8">
           <SignedIn>
             <UserButton
               appearance={{
@@ -84,7 +84,7 @@ const Sidebar = () => {
             const isActive = pathName === link.route || pathName.startsWith(`${link.route}/`);
             return (
               <Link rel='canonical' href={link.route} key={link.label} className={cn(`flex items-center gap-4 p-4 rounded-lg ${!isOpen ? 'justify-center' : 'justify-start'}`, {
-                'bg-blue-1': isActive,
+                'bg-blue-2 text-light-4': isActive,
               })}>
                 <Image src={link.imgUrl} alt={link.label} width={24} height={24} />
                 <p className={`text-lg font-semibold transition-opacity duration-300 ${isOpen ? 'inline-block' : 'hidden'} max-lg:hidden`}>
@@ -94,7 +94,7 @@ const Sidebar = () => {
             );
           })}
         </div>
-        <Button className='w-full bg-blue-1 absolute bottom-0 left-0 min-h-[7%] transition-all duration-300 ease-in-out' variant='default' onClick={toggleSidebar}>
+        <Button className='w-full bg-blue-2 absolute bottom-0 left-0 min-h-[7%] transition-all duration-300 ease-in-out' variant='default' onClick={toggleSidebar}>
           {isOpen ? <ArrowLeft className='w-8 h-8 text-white' /> : <ArrowRight className='w-8 h-8 text-white' />}
         </Button>
       </div>

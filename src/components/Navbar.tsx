@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes';
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <nav className={`flex-between fixed z-50 w-full ${theme === 'dark' ? 'bg-gray-950' : 'bg-white'} px-6 py-4 lg:px-10 `}>
+    <nav className={`flex-between fixed z-50 w-full ${theme === 'dark' ? 'bg-dark-1' : 'bg-light-4'} px-6 py-4 lg:px-10 `}>
       <Link href={'/'} className='flex items-center gap-1'>
         <Image src={'/icons/logo.svg'} alt='Kumpul Logo' width={32} height={32} className='max-sm:size-10' />
         <p className='text-[26px] font-extrabold text-white max-sm:hidden'>Kumpul</p>

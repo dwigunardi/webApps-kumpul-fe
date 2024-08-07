@@ -10,7 +10,7 @@ import { useToast } from "./ui/use-toast";
 interface MeetingCardProps {
   title: string;
   date: string;
-  icon: string;
+  IconCard: JSX.Element | any;
   isPreviousMeeting?: boolean;
   buttonIcon1?: string;
   buttonText?: string;
@@ -19,7 +19,7 @@ interface MeetingCardProps {
 }
 
 const MeetingCard = ({
-  icon,
+  IconCard,
   title,
   date,
   isPreviousMeeting,
@@ -31,9 +31,9 @@ const MeetingCard = ({
   const { toast } = useToast();
 
   return (
-    <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-dark-1 px-5 py-8 xl:max-w-full">
+    <section className="flex min-h-[370px] w-full flex-col justify-between rounded-[14px] text-light-5 dark:text-light-4 bg-light-4 dark:bg-dark-1 px-5 py-8 xl:max-w-full">
       <article className="flex flex-col gap-5">
-        <Image src={icon} alt="upcoming" width={28} height={28} />
+        {IconCard}
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">{title}</h1>

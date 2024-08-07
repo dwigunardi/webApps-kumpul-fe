@@ -8,6 +8,7 @@ import MeetingCard from './MeetingCard';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from './ui/use-toast';
+import { IconPrev, IconRecording, IconUpcoming } from './custom/IconList';
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
     const router = useRouter();
@@ -75,17 +76,17 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
     const noCallsMessage = getNoCallsMessage();
 
     return (
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-2">
             {calls && calls.length > 0 ? (
                 calls.map((meeting: Call | CallRecording) => (
                     <MeetingCard
                         key={(meeting as Call).id || (meeting as CallRecording).filename}
-                        icon={
+                        IconCard={
                             type === 'ended'
-                                ? '/icons/previous.svg'
+                                ? <IconPrev width={33} height={28} className="text-light-5 dark:text-light-4"/>
                                 : type === 'upcoming'
-                                    ? '/icons/upcoming.svg'
-                                    : '/icons/recordings.svg'
+                                    ? <IconUpcoming width={33} height={28} className="text-light-5 dark:text-light-4"/>
+                                    : <IconRecording width={33} height={28} className="text-light-5 dark:text-light-4"/>
                         }
                         title={
                             (meeting as Call).state?.custom?.description ||
@@ -112,7 +113,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                     />
                 ))
             ) : (
-                <h1 className="text-2xl font-bold text-white">{noCallsMessage}</h1>
+                <h1 className="text-2xl font-bold text-light-5 dark:text-white">{noCallsMessage}</h1>
             )}
         </div>
     );
