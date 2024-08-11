@@ -8,7 +8,6 @@ module.exports = {
           pathname: '**',
         },
       ],
-      domains:['i.pravatar.cc']
     },
   }
 

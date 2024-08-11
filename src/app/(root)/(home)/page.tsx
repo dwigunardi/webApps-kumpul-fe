@@ -1,7 +1,7 @@
 
 import DashboardCard from '@/components/DashboardCard';
 import MeetingTypeList from '@/components/MeetingTypeList';
-import TabsDemo from '@/components/TabsNavigation';
+import TabsNavigation from '@/components/TabsNavigation';
 import UpcomingMeetText from '@/components/UpcomingMeetText';
 
 
@@ -23,8 +23,8 @@ const Home = () => {
         </div>
       </div> */}
       <DashboardCard />
-      <TabsDemo />
-      <MeetingTypeList />
+      <TabsNavigation />
+      {/* <MeetingTypeList /> */}
     </section>
   )
 }

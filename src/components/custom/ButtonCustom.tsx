@@ -7,6 +7,8 @@ interface ButtonCustomProps {
     shadowColor: React.ComponentProps<"button">["className"]
     children: React.ReactNode
     variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
+    className?: string
+    onClick?: () => void
 }
 
 export default function ButtonCustom(props: ButtonCustomProps) {
