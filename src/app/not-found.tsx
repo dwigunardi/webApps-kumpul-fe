@@ -14,8 +14,8 @@ export default function NotFound() {
                         Oops! Page Not Found
                     </h1>
                     <p className="text-lg text-light-6 mb-8">
-                        The page you're looking for seems to have gone on a little adventure.
-                        Don't worry, we'll help you find your way back home.
+                        The page you&apos;re looking for seems to have gone on a little adventure.
+                        Don&apos;t worry, we&apos;ll help you find your way back home.
                     </p>
                     <Link href="/"
                         className="inline-block bg-blue-2 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition-colors duration-300"
