@@ -19,10 +19,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { LayoutList, Users } from "lucide-react";
+import { LayoutList, MessageSquare, Users } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
+import ChatRoom from "./ChatRoom";
 
 type CallLayoutType = 'speaker-left' | 'speaker-right' | 'grid'
 
@@ -31,6 +32,7 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
   const isPersonalRoom = !!searchParms.get('personal')
   const [layout, setLayout] = useState<CallLayoutType>('speaker-left');
   const [showParticipant, setShowParticipant] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const { useCallCallingState } = useCallStateHooks()
 
   const callingState = useCallCallingState()
@@ -50,17 +52,26 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
 
   return (
     <section className='relative h-screen w-full overflow-hidden text-white'>
-      <div className="relative flex size-full items-center justify center container">
-        <div className="flex h-[100%] w-[100%] max-w-full items-center">
+      <div className="relative flex size-full items-center justify-center">
+        <div className="flex h-[100%] w-[100%] max-w-full items-center mx-10">
           <CallLayout />
         </div>
-        <div className={cn(`h-[calc(100vh-86px)] hidden ml-2`, {
+        <div className={cn(`h-[calc(100vh-150px)] hidden ml-2`, {
           'show-block': showParticipant
         })}>
           <CallParticipantsList onClose={() => setShowParticipant(false)} />
         </div>
+        <div className={cn(`h-[calc(100vh-86px)] hidden ml-2`, {
+          'show-block': showChat
+        })}>
+          <ChatRoom onClose={() => {
+            setShowChat(false)
+            document.getElementById('indicator-badge')?.classList.remove('absolute')
+            document.getElementById('indicator-badge')?.classList.add('hidden')
+          }} isShow={showChat} />
+        </div>
       </div>
-      <div className="fixed bottom-0 flex flex-wrap w-full items-center justify-center gap-5">
+      <div className="fixed bottom-0 flex flex-wrap w-full items-center justify-center gap-5 mx-auto">
         <CallControls />
         
         <DropdownMenu>
@@ -90,9 +101,19 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
             <Users size={20} className="text-white" />
           </div>
         </button>
+        <button title="ChatBox" onClick={() => setShowChat((prev) => !prev)}>
+          <div className="cursor-pointer rounded-2xl bg-[#19232d] p-4 py-2 hover:bg-[#4c535b]">
+          <div className="relative">
+            <div className="absolute inset-0 h-2 w-2 rounded-full bg-red-500" id="indicator-badge">
+              <div className="absolute inset-0 h-2 w-2 rounded-full animate-ping bg-red-500 hidden"></div>
+            </div>
+            <MessageSquare size={20} className="text-white" />
+          </div>
+          </div>
+        </button>
         {!isPersonalRoom && (
           <EndCallButton />
-        )}
+        )}       
       </div>
     </section>
   )

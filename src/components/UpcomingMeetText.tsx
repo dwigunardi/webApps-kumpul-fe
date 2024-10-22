@@ -11,7 +11,7 @@ const UpcomingMeetText = () => {
             {upcomingCalls?.map((call: Call) =>
             (
                 <h2 className='glassmorphism max-w-fit px-3 rounded py-2 text-center text-base font-normal' key={call.id}>
-                    Upcoming Meeting at {call.state?.startsAt?.toLocaleString().split(',')[0] + ', ' + call.state?.startsAt?.toLocaleString().split(',')[1].slice(0, 6) ?? 'No Upcoming Meeting'}
+                    Upcoming Meeting at {call.state?.startsAt?.toLocaleString().split(',')[0] + ', ' + call.state?.startsAt?.toLocaleString().split(',')[1].slice(0, 6) || 'No Upcoming Meeting'}
                 </h2>
             )
             )}

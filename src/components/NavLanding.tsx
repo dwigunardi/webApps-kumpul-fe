@@ -3,30 +3,32 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import ButtonCustom from "./custom/ButtonCustom"
 
 export default function NavLanding() {
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const controlNavbar = () => {
-        if (typeof window === 'undefined') return;
-        const timeOut = 3000; // 3 seconds timeout
-        let scrollTimeout: any
-        let scroll = typeof window !== 'undefined' ? window.scrollY : 0;
+    const controlNavbar = useCallback(
+        () => {
+            if (typeof window === 'undefined') return;
+            const timeOut = 3000; // 3 seconds timeout
+            let scrollTimeout: any
+            let scroll = typeof window !== 'undefined' ? window.scrollY : 0;
 
-        if (scroll > lastScrollY) { // if scroll down hide the navbar
-            setShow(false);
-        } else { // if scroll up show the navbar
-            setShow(true);
-        }
-        if (document.documentElement.scrollTop === 0 || window.scrollY === 0) setShow(true);
-        if (scroll === 0) setShow(true);
+            if (scroll > lastScrollY) { // if scroll down hide the navbar
+                setShow(false);
+            } else { // if scroll up show the navbar
+                setShow(true);
+            }
+            if (document.documentElement.scrollTop === 0 || window.scrollY === 0) setShow(true);
+            if (scroll === 0) setShow(true);
 
-        // remember current page location to use in the next move
-        setLastScrollY(window.scrollY);
-    };
+            // remember current page location to use in the next move
+            setLastScrollY(window.scrollY);
+        },
+        [lastScrollY])
 
     useEffect(() => {
         window.addEventListener('scroll', controlNavbar);
@@ -35,7 +37,7 @@ export default function NavLanding() {
         return () => {
             window.removeEventListener('scroll', controlNavbar);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY, controlNavbar]);
 
     return (
         <header className={`fixed ${show ? 'top-0 shadow-md' : '-top-20'} transition-all z-30 flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-light-4 dark:bg-dark-2`}>

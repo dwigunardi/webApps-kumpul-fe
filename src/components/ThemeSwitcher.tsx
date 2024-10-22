@@ -15,17 +15,17 @@ import { useTheme } from "next-themes"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 export function ThemeSwitcher() {
   const { theme, systemTheme, setTheme } = useTheme()
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams()
   const pathname = usePathname();
   const { replace } = useRouter();
-  const params = new URLSearchParams(searchParams.toString())
   const createQueryString = React.useCallback(
     (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
       params.set(name, value)
       replace(`${pathname}?${params.toString()}`);
       return params.toString()
     },
-    [searchParams]
+    [replace, pathname, searchParams]
   )
 
   return (

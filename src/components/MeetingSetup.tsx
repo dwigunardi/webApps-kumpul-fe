@@ -39,15 +39,12 @@ const MeetingSetup = ({setIsSetupComplete}: {setIsSetupComplete: (value: boolean
                 await call.camera.disable()
                 await call.endCall()
                 setIsMicCamToggleOn(false)
-            }
-            console.log(event?.target?.location.pathname != pathName, 'popstate')
-            console.log(pathName)
-            
+            }            
         }
         // window.onpopstate = handlePopState
         window.onpopstate = handlePopState
         // return () => window.removeEventListener('popstate', handlePopState)
-    }, [isMicCamToggleOn, call?.camera, call?.microphone])
+    }, [isMicCamToggleOn, call, pathName, call?.camera, call?.microphone])
 
   return (
     <div className='flex flex-col h-screen w-full items-center justify-center gap-3 text-white'>

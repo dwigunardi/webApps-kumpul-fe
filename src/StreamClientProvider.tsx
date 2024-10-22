@@ -15,7 +15,7 @@ const StreamVideoProvider = ({ children }: { children: React.ReactNode }) => {
     const [videoClient, setVideoClient] = useState<StreamVideoClient>();
     const {user, isLoaded } = useUser();
 
-    const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
+    const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY as string || '';
 
     useEffect(() => {
         if(!user || !isLoaded) return;
@@ -33,7 +33,7 @@ const StreamVideoProvider = ({ children }: { children: React.ReactNode }) => {
 
         setVideoClient(client);
 
-    }, [user, isLoaded]);
+    }, [user, isLoaded, apiKey]);
 
     if(!videoClient) return <Loader />
     
