@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 const HomeLayout = ({ children, searchParams }: { children: ReactNode, searchParams: URLSearchParams }) => {
     const { userId, getToken } = auth();
     const token = getToken();
-
-    if (!userId || !token) {
-        return (
-            <main className='flex items-center justify-center bg-light-1 dark:bg-black'>
-                <Loader />
-            </main>
-        )
-    }
+    // console.log(userId, token)
+    // if (!userId || !token) {
+    //     return (
+    //         <main className='flex items-center justify-center bg-light-1 dark:bg-black'>
+    //             <Loader />
+    //         </main>
+    //     )
+    // }
 
 
     return (

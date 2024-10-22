@@ -1,15 +1,24 @@
 'use client';
-import { DeviceSettings, VideoPreview, useCall } from '@stream-io/video-react-sdk'
+import { DeviceSettings, OwnCapability, VideoPreview, useCall, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const MeetingSetup = ({setIsSetupComplete}: {setIsSetupComplete: (value: boolean) => void}) => {
     const [isMicCamToggleOn, setIsMicCamToggleOn] = useState(false)
+    const { useCallSettings, useMicrophoneState, useCameraState } = useCallStateHooks();
+    const settings = useCallSettings();
+    const { microphone, isMute } = useMicrophoneState();
+    const { camera, hasBrowserPermission } = useCameraState();
     const call = useCall()
+    const pathName = usePathname()
+    const router = useRouter()
+    const param = useSearchParams()
 
     if(!call) throw new Error('useCall must be used within a StreamCall Component!')
 
     useEffect(() => {
+        let sub = true
         if(isMicCamToggleOn){
             call?.camera.disable()
             call?.microphone.disable()
@@ -18,9 +27,27 @@ const MeetingSetup = ({setIsSetupComplete}: {setIsSetupComplete: (value: boolean
             call?.microphone.enable()   
         }
         return () => {
-            
+            sub = false
         };
     }, [isMicCamToggleOn, call?.camera, call?.microphone]);
+
+    useEffect(() => {
+        const handlePopState = async (event: PopStateEvent | any) => {
+            if(event.target as any == null) return
+            if(event?.target?.location.pathname != pathName) {
+                await call.microphone.disable()
+                await call.camera.disable()
+                await call.endCall()
+                setIsMicCamToggleOn(false)
+            }
+            console.log(event?.target?.location.pathname != pathName, 'popstate')
+            console.log(pathName)
+            
+        }
+        // window.onpopstate = handlePopState
+        window.onpopstate = handlePopState
+        // return () => window.removeEventListener('popstate', handlePopState)
+    }, [isMicCamToggleOn, call?.camera, call?.microphone])
 
   return (
     <div className='flex flex-col h-screen w-full items-center justify-center gap-3 text-white'>

@@ -38,7 +38,7 @@ export default function NavLanding() {
     }, [lastScrollY]);
 
     return (
-        <header className={`fixed ${show ? 'top-0' : '-top-20'} transition-all z-30 border-b-2 shadow-lg shadow-slate-900 border-dark-2 flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-light-1 dark:bg-dark-1`}>
+        <header className={`fixed ${show ? 'top-0 shadow-md' : '-top-20'} transition-all z-30 flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-light-4 dark:bg-dark-2`}>
             <Sheet>
                 <SheetTrigger asChild>
                     <Button variant="outline" size="icon" className="lg:hidden">
@@ -69,10 +69,13 @@ export default function NavLanding() {
                     </div>
                 </SheetContent>
             </Sheet>
-            <Link href="/" className="mr-6 hidden lg:flex lg:gap-3 items-center" prefetch={false}>
-                <Image src={'/icons/logo.svg'} alt='logo' width={50} height={50} />
-                <span className="font-bold text-xl">Kumpul</span>
-            </Link>
+            <div className="container">
+
+                <Link href="/" className="mr-6 hidden lg:flex lg:gap-3 items-center" prefetch={false}>
+                    <Image src={'/images/logo.svg'} alt='logo' width={50} height={50} />
+                    {/* <span className="font-bold text-xl">Kumpul</span> */}
+                </Link>
+            </div>
             <nav className="hidden ml-auto lg:flex gap-6">
                 {/* <Link
                     href="#"
@@ -103,19 +106,23 @@ export default function NavLanding() {
                     Contact
                 </Link> */}
             </nav>
-            <nav className="ml-auto hidden lg:flex gap-6">
-                <Link href="/sign-in"
-                    //className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                    prefetch={false}>
-                    <ButtonCustom bgColor={'bg-blue-1'} textColor={'text-blue-1'} shadowColor={'shadow-blue-1'}><span className='relative z-10'>Sign In</span></ButtonCustom>
-                </Link>
-                <Link
-                    href="/sign-up"
-                    //className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                    prefetch={false}
-                >
-                    <ButtonCustom bgColor={'bg-blue-1'} textColor={'text-blue-1'} shadowColor={'shadow-blue-1'}><span className='relative z-10'>Sign Up</span></ButtonCustom>
-                </Link>
+            <nav className="ml-auto hidden lg:flex">
+                <div className="container">
+                    <div className="lg:flex gap-6">
+                        <Link href="/sign-in"
+                            //className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                            prefetch={false}>
+                            <ButtonCustom isShow={show} bgColor={'bg-blue-1'} textColor={'text-blue-1'} shadowColor={'shadow-blue-1'}><span className='relative z-10'>Sign In</span></ButtonCustom>
+                        </Link>
+                        <Link
+                            href="/sign-up"
+                            //className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                            prefetch={false}
+                        >
+                            <ButtonCustom isShow={show} bgColor={'bg-blue-1'} textColor={'text-blue-1'} shadowColor={'shadow-blue-1'}><span className='relative z-10'>Sign Up</span></ButtonCustom>
+                        </Link>
+                    </div>
+                </div>
             </nav>
         </header>
     )

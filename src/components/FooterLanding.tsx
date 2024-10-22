@@ -4,8 +4,8 @@ import React from 'react'
 
 const FooterLanding = () => {
     return (
-        <footer className="bg-primary text-primary-foreground py-6 px-4 md:px-6">
-            <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+        <footer className="bg-blue-2 text-primary-foreground py-6 px-4 md:px-6">
+            <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-white">
                 <div className="text-sm flex flex-col md:flex-row gap-2 align-middle items-center">
                     <p>&copy; 2024 @Kumpul. This is a demo made with</p>
                     <Heart fill='red' />

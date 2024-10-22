@@ -9,7 +9,7 @@ function Unauthorized() {
                     <div className="flex flex-col items-center">
                         <h1 className="text-4xl font-bold text-red-500 dark:text-red-400">403</h1>
                         <h2 className="mt-4 text-2xl font-bold text-gray-800 dark:text-gray-200">Forbidden</h2>
-                        <p className="mt-4 text-gray-600 dark:text-gray-400">You do not have permission to access this resource.</p>
+                        <p className="mt-4 text-gray-600 dark:text-gray-400">You do not have permission to access this resource. Please Login First.</p>
                     </div>
                     <div className="mt-6 flex justify-center space-x-4">
                         <Link
@@ -19,13 +19,15 @@ function Unauthorized() {
                         >
                             Go to Homepage
                         </Link>
-                        <Link
-                            href="#"
+                        <a
+                            href={"https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dwigunardi98@gmail.com&su=Support%20Request"}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:text-gray-200 dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus:ring-gray-600"
-                            prefetch={false}
                         >
                             Contact Support
-                        </Link>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -3,9 +3,9 @@ import { Calendar } from "@/components/ui/calendar"
 import { useGetCalls } from "@/hooks/useGetCalls";
 import { addDays } from "date-fns";
 import React, { useEffect, useState } from "react"
-import Loader from "./Loader";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Call } from "@stream-io/video-react-sdk";
+import { SkeletonCard } from "./SkeletonCard";
 
 export default function DateCalendar() {
   const [selectedDates, setSelectedDates] = useState<Date[]>([new Date()]);
@@ -13,7 +13,7 @@ export default function DateCalendar() {
   const showTooltip = useDebounce(isShowTooltip, 300);
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <SkeletonCard />
   
   return (
     <Calendar

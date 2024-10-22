@@ -1,16 +1,19 @@
-'use client';
+'use client'
 
-import Loader from "@/components/Loader";
-import MeetingRoom from "@/components/MeetingRoom";
-import MeetingSetup from "@/components/MeetingSetup";
-import { useGetCallById } from "@/hooks/useGetCallById";
-import { useUser } from "@clerk/nextjs";
-import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import Loader from '@/components/Loader'
+import MeetingRoom from '@/components/MeetingRoom'
+import MeetingSetup from '@/components/MeetingSetup'
+import { useGetCallById } from '@/hooks/useGetCallById'
+import { useUser } from '@clerk/nextjs'
+import { StreamCall, StreamTheme, useStreamVideoClient } from '@stream-io/video-react-sdk'
+import { useSearchParams } from 'next/navigation'
+import React, { useState } from 'react'
 
+type Props = {
+    id: string
+}
 
-const Meeting = ({ params: { id } }: { params: { id: string } }) => {
+const ContentAnonymous = ({ id }: Props) => {
     const { user, isLoaded } = useUser();
     const [isSetupComplete, setIsSetupComplete] = useState(false)
     const params = useSearchParams()
@@ -32,4 +35,4 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
     )
 }
 
-export default Meeting
+export default ContentAnonymous

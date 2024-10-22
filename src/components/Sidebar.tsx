@@ -39,7 +39,7 @@ const Sidebar = () => {
   return (
     <div className={`sticky top-0 left-0 h-screen transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-32'} ${theme === 'dark' ? 'bg-dark-1 text-white' : 'bg-light-4 text-[#555555]'}`}>
       <div className="flex flex-col justify-between h-full p-6 pt-28 relative">
-        <div className="flex justify-between gap-2 border border-blue-2 p-4 rounded-2xl mt-0 mb-8">
+        <div className="flex justify-between gap-2 bg-blue-2 p-4 rounded-2xl mt-0 mb-8 text-white">
           <SignedIn>
             <UserButton
               appearance={{
@@ -48,8 +48,8 @@ const Sidebar = () => {
                   avatarBox: 'w-12 h-12',
                   userPreview: 'hidden',
                   userButtonPopoverFooter: 'hidden',
-                  userButtonPopoverMain: theme === 'dark' ? 'bg-gray-950 text-white'
-                    : 'bg-white text-[#555555]',
+                  userButtonPopoverMain: theme === 'dark' ? 'bg-blue-2 text-white'
+                    : 'bg-blue-2 text-[#555555]',
                     userButtonPopoverActionButton: theme === 'dark' ? 'bg-gray-950 text-white hover:text-sky-1' : 'bg-white text-[#555555] hover:text-gray-950',
                     scrollBox: theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-[#555555]',
                 }
@@ -79,14 +79,14 @@ const Sidebar = () => {
             <p className={`text-[12px] text-wrap font-light ${isOpen ? 'inline-block' : 'hidden'} max-lg:hidden`}>{userData.user?.emailAddresses[0]?.emailAddress}</p>
           </div>
         </div>
-        <div className="flex flex-1 flex-col gap-6">
+        <div className="flex flex-1 flex-col gap-6 overflow-y-auto no-scrollbar">
           {SideBarLinks.map((link) => {
             const isActive = pathName === link.route || pathName.startsWith(`${link.route}/`);
             return (
               <Link rel='canonical' href={link.route} key={link.label} className={cn(`flex items-center gap-4 p-4 rounded-lg ${!isOpen ? 'justify-center' : 'justify-start'}`, {
                 'bg-blue-2 text-light-4': isActive,
               })}>
-                <Image src={link.imgUrl} alt={link.label} width={24} height={24} />
+                {link.imgUrl}
                 <p className={`text-lg font-semibold transition-opacity duration-300 ${isOpen ? 'inline-block' : 'hidden'} max-lg:hidden`}>
                   {link.label}
                 </p>

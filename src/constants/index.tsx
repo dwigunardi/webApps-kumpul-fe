@@ -1,28 +1,36 @@
-export const SideBarLinks = [
+import { IconAddPersonal, IconHome, IconPrevious, IconUpcomingTab, IconVideo } from "@/components/custom/IconList";
+
+type SideBarLink = {
+    label: string;
+    route: string;
+    imgUrl: JSX.Element | any;
+}
+
+export const SideBarLinks: SideBarLink[] = [
     {
         label: 'Home',
         route: '/',
-        imgUrl: '/icons/Home.svg',
+        imgUrl: <IconHome  />,
     },
     {
         label: 'Upcoming',
         route: '/upcoming',
-        imgUrl: '/icons/upcoming.svg',
+        imgUrl: <IconUpcomingTab  />,
     },
     {
         label: 'Previous',
         route: '/previous',
-        imgUrl: '/icons/previous.svg',
+        imgUrl: <IconPrevious  />,
     },
     {
         label: 'Recordings',
         route: '/recordings',
-        imgUrl: '/icons/Video.svg',
+        imgUrl: <IconVideo />,
     },
     {
         label: 'Personal Room',
         route: '/personal-room',
-        imgUrl: '/icons/add-personal.svg',
+        imgUrl: <IconAddPersonal />,
     },
 ]
 

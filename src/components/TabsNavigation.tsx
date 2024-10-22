@@ -7,7 +7,7 @@ import MeetingModal from './MeetingModal';
 import Loader from './Loader';
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 import { useToast } from './ui/use-toast';
-import { useUser } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -36,6 +36,7 @@ const TabsNavigation = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const deskripsiRef = useRef<HTMLTextAreaElement>(null);
   const router = useRouter();
+  const {sessionId} = useAuth();
 
   const createMeeting = async () => {
     if (!client || !user) return;
@@ -60,6 +61,11 @@ const TabsNavigation = () => {
       });
       setCallDetail(call);
       if (!values.description) {
+        if(meetingState === 'isInstantMeeting'){
+          sessionStorage.setItem('meetingId', 'instant?id='+ call.id);
+          router.push(`/meeting/${'instant?id='+ call.id}`);
+        }
+        else
         router.push(`/meeting/${call.id}`);
       }
       toast({

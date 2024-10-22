@@ -13,7 +13,7 @@ const DashboardCard = () => {
         }, 60000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [dateNow]);
 
     if (!isLoaded) {
         return (
