@@ -51,7 +51,7 @@ export default function ChatRoom({ onClose, isShow, messageData}: { onClose: () 
             messageContainer.scrollTop = messageContainer.scrollHeight;
         }
         const badgeIndicator = document.getElementById('indicator-badge');
-        console.log(badgeIndicator)
+  
         if(messages.length > 0) {
             if (badgeIndicator) {
                 badgeIndicator.classList.remove('hidden');

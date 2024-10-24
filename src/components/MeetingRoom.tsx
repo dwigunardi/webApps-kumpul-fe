@@ -56,12 +56,12 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
         <div className="flex h-[100%] w-[100%] max-w-full items-center mx-10">
           <CallLayout />
         </div>
-        <div className={cn(`h-[calc(100vh-150px)] hidden ml-2`, {
+        <div className={cn(`h-[calc(100vh-150px)] ${showParticipant ? '' : 'hidden'} ml-2`, {
           'show-block': showParticipant
         })}>
           <CallParticipantsList onClose={() => setShowParticipant(false)} />
         </div>
-        <div className={cn(`h-[calc(100vh-86px)] hidden ml-2`, {
+        <div className={cn(`h-[calc(100vh-86px)] ${showChat ? '' : 'hidden'} ml-2`, {
           'show-block': showChat
         })}>
           <ChatRoom onClose={() => {
