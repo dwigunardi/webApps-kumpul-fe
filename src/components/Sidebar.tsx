@@ -37,7 +37,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className={`sticky top-0 left-0 h-screen transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-32'} ${theme === 'dark' ? 'bg-dark-1 text-white' : 'bg-light-4 text-[#555555]'}`}>
+    <div className={`hidden xl:block sticky top-0 left-0 h-screen transition-all duration-300 ease-in-out ${isOpen ? 'w-64' : 'w-32'} ${theme === 'dark' ? 'bg-dark-1 text-white' : 'bg-light-4 text-[#555555]'}`}>
       <div className="flex flex-col justify-between h-full p-6 pt-28 relative">
         <div className="flex justify-start gap-4 bg-blue-2 p-4 rounded-2xl mt-0 mb-8 text-white">
           <SignedIn>

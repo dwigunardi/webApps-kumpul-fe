@@ -1,5 +1,7 @@
 import ButtonCustom from '@/components/custom/ButtonCustom'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Button } from '@/components/ui/button'
+import SetThemeCookie from '@/hooks/setThemeCookie'
 import { ArrowBigRight, ArrowRightCircleIcon, CircleCheckBig } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,13 +11,17 @@ const Landing = () => {
   return (
     <div className='w-full relative'>
       <div className="xs:hidden lg:fixed right-10 bottom-10 z-50">
-        <Link href={'/sign-up'}>
+        {/* <Link href={'/sign-up'}>
           <ButtonCustom variant="outline" bgColor='bg-blue-1' textColor='text-blue-1' shadowColor='shadow-blue-1' >
             <span className='relative z-10'>Sign Up
             </span>
             <ArrowRightCircleIcon className='ml-3 hover:text-white z-10 relative' />
           </ButtonCustom>
-        </Link>
+        </Link> */}
+        <div className="bg-blue-1 p-3 rounded-full text-light-4">
+          <ThemeSwitcher />
+          <SetThemeCookie />
+        </div>
       </div>
       <section className="bg-blue-2 dark:bg-dark-1 mt-5 mb-10 py-12 md:py-24 lg:py-28">
         <div className="container grid gap-5 md:grid-cols-2 items-start">
@@ -72,7 +78,8 @@ const Landing = () => {
             <Image
               alt="Hero image"
               src="/images/kumpul-dekstop.svg"
-              layout='fill'
+               fill
+               sizes="100vw"
               // objectFit='cover'
             />
           </div>
@@ -89,9 +96,9 @@ const Landing = () => {
           /> */}
         </div>
       </section>
-      <section className='mb-10 mt-10 lg:mt-32'>
+      <section className='mb-10 mt-3 lg:mt-32'>
         <div className="container">
-          <div className="w-full h-[80vh]">
+          <div className="w-full h-[50vh] md:h-[80vh]">
             <div className='relative w-full h-full'>
               <Image
                 src="/images/kumpul-component.svg"
