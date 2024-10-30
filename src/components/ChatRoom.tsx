@@ -87,7 +87,7 @@ export default function ChatRoom({ onClose, isShow, messageData}: { onClose: () 
 
     return (
         <div id="message-container" className={`w-full h-full`}>
-            <div className='w-full h-fit p-4 bg-blue-2 dark:bg-dark-1 flex justify-between'>
+            <div className='w-full h-fit p-4 text-white bg-blue-2 dark:bg-dark-1 flex justify-between'>
                 <h1 className='text-center font-bold'>Chat Room</h1>
                 <XCircleIcon className='w-6 h-6 cursor-pointer transition-colors duration-300 ease-in-out hover:text-red-600' onClick={onClose} />
             </div>

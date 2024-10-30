@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { LayoutList, MessageSquare, Users } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 import ChatRoom from "./ChatRoom";
@@ -29,6 +29,7 @@ type CallLayoutType = 'speaker-left' | 'speaker-right' | 'grid'
 
 const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
   const searchParms = useSearchParams()
+  const router = useRouter()
   const isPersonalRoom = !!searchParms.get('personal')
   const [layout, setLayout] = useState<CallLayoutType>('speaker-left');
   const [showParticipant, setShowParticipant] = useState(false);
@@ -51,12 +52,12 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
   };
 
   return (
-    <section className='relative h-screen w-full overflow-hidden text-white'>
+    <section className='relative h-screen w-full overflow-hidden text-light-5 dark:text-white'>
       <div className="relative flex size-full items-center justify-center">
-        <div className="flex h-[100%] w-[100%] max-w-full items-center mx-10">
+        <div className="flex h-[100%] w-[100%] max-w-full items-center mx-20">
           <CallLayout />
         </div>
-        <div className={cn(`h-[calc(100vh-150px)] ${showParticipant ? '' : 'hidden'} ml-2`, {
+        <div className={cn(`h-[calc(100vh-86px)] ${showParticipant ? '' : 'hidden'} ml-2`, {
           'show-block': showParticipant
         })}>
           <CallParticipantsList onClose={() => setShowParticipant(false)} />
@@ -72,8 +73,9 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
         </div>
       </div>
       <div className="fixed bottom-0 flex flex-wrap w-full items-center justify-center gap-5 mx-auto">
-        <CallControls />
-        
+        <CallControls onLeave={() => {
+          router.push('/')
+        }} /> 
         <DropdownMenu>
           <div className="flex items-center">
             <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] p-4 py-2 hover:bg-[#4c535b]">
@@ -103,17 +105,17 @@ const MeetingRoom = ({ meetingId }: { meetingId: string }) => {
         </button>
         <button title="ChatBox" onClick={() => setShowChat((prev) => !prev)}>
           <div className="cursor-pointer rounded-2xl bg-[#19232d] p-4 py-2 hover:bg-[#4c535b]">
-          <div className="relative">
-            <div className="absolute inset-0 h-2 w-2 rounded-full bg-red-500" id="indicator-badge">
-              <div className="absolute inset-0 h-2 w-2 rounded-full animate-ping bg-red-500 hidden"></div>
+            <div className="relative">
+              <div className="absolute inset-0 h-2 w-2 rounded-full bg-red-500" id="indicator-badge">
+                <div className="absolute inset-0 h-2 w-2 rounded-full animate-ping bg-red-500 hidden"></div>
+              </div>
+              <MessageSquare size={20} className="text-white" />
             </div>
-            <MessageSquare size={20} className="text-white" />
-          </div>
           </div>
         </button>
         {!isPersonalRoom && (
           <EndCallButton />
-        )}       
+        )}
       </div>
     </section>
   )

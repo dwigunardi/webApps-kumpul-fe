@@ -74,7 +74,7 @@ export default function NavLanding() {
             <div className="container">
 
                 <Link href="/" className="mr-6 hidden lg:flex lg:gap-3 items-center" prefetch={false}>
-                    <Image src={'/images/logo.svg'} alt='logo' width={50} height={50} style={{ width: "50px", height: "50px" }} />
+                    <Image src={'/images/Logo.svg'} alt='logo' width={50} height={50} style={{ width: "50px", height: "50px" }} />
                     {/* <span className="font-bold text-xl">Kumpul</span> */}
                 </Link>
             </div>
