@@ -50,5 +50,5 @@ export default clerkMiddleware((auth, req) => {
 });
 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next/images|_next/sound|_next/icons).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)'],
 };
